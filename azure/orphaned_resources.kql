@@ -1,0 +1,24 @@
+// Azure Resource Graph Explorer: orphaned resources that keep billing.
+// Run in the portal (Resource Graph Explorer) or: az graph query -q "<query>"
+
+// 1. Managed disks attached to nothing
+Resources
+| where type =~ 'microsoft.compute/disks'
+| where properties.diskState =~ 'Unattached'
+| project name, resourceGroup, location, sizeGB = properties.diskSizeGB, sku = sku.name, owner = tags.Owner
+
+// 2. Public IPs not associated with anything
+// Resources
+// | where type =~ 'microsoft.network/publicipaddresses'
+// | where isnull(properties.ipConfiguration) and isnull(properties.natGateway)
+// | project name, resourceGroup, location, sku = sku.name
+
+// 3. Snapshots older than 90 days
+// Resources
+// | where type =~ 'microsoft.compute/snapshots'
+// | where todatetime(properties.timeCreated) < ago(90d)
+// | project name, resourceGroup, created = properties.timeCreated, sizeGB = properties.diskSizeGB
+
+// Idle Azure SQL databases are found with metrics, not Resource Graph:
+// Azure Advisor "Right-size or shut down underutilized SQL databases", or
+// Azure Monitor: average cpu_percent < 5% and connection_successful ~ 0 over 14 days.

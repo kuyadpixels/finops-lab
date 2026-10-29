@@ -1,0 +1,6 @@
+{
+  "_note": "EXAMPLE prices in USD per 1 million tokens. Replace with your provider's current price list before using real numbers.",
+  "model-large":  { "input": 15.00, "output": 75.00, "cached_input": 1.50 },
+  "model-medium": { "input": 3.00,  "output": 15.00, "cached_input": 0.30 },
+  "model-small":  { "input": 0.80,  "output": 4.00,  "cached_input": 0.08 }
+}

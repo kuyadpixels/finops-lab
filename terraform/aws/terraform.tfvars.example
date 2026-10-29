@@ -1,0 +1,5 @@
+owner              = "kp"
+alert_email        = "you@example.com"
+monthly_budget_usd = 50
+waste_regions      = ["ap-southeast-1", "ap-southeast-5"]
+dry_run            = true

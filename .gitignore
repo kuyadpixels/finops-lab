@@ -1,0 +1,11 @@
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+!*.tfvars.example
+.terraform.lock.hcl
+terraform/aws/.build/
+__pycache__/
+demo/data/
+ai-tokens/sample_usage.csv
+.DS_Store

@@ -1,0 +1,7 @@
+{
+  "_note": "Monthly AI budget per team in USD (example values).",
+  "support-bot": 1000,
+  "doc-search": 800,
+  "dev-tools": 700,
+  "analytics": 300
+}
