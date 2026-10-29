@@ -1,0 +1,45 @@
+name: ci
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install duckdb pyyaml
+      - name: Unit tests
+        run: |
+          cd lambda/waste_finder && python -m unittest -v && cd ../..
+          cd k8s && python -m unittest -v
+      - name: Demo reports (synthetic data)
+        run: |
+          python demo/generate_sample.py
+          python demo/run_demo.py
+          python ai-tokens/token_report.py --sample
+          python k8s/allocate.py
+      - name: YAML parses
+        run: python -c "import glob,yaml; [list(yaml.safe_load_all(open(f))) for f in glob.glob('k8s/**/*.yaml', recursive=True)]"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: reports
+          path: reports/
+
+  terraform:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        dir: [terraform/aws, terraform/azure]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+      - name: Format (report only)
+        run: terraform -chdir=${{ matrix.dir }} fmt -check -diff
+        continue-on-error: true
+      - run: terraform -chdir=${{ matrix.dir }} init -backend=false -input=false
+      - run: terraform -chdir=${{ matrix.dir }} validate

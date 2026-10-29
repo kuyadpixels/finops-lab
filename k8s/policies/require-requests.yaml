@@ -1,0 +1,30 @@
+# Kyverno: containers must set CPU and memory requests and a memory limit.
+# Without requests the scheduler packs blindly and cost allocation by request is meaningless.
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-requests
+spec:
+  validationFailureAction: Audit
+  background: true
+  rules:
+    - name: requests-and-memory-limit
+      match:
+        any:
+          - resources:
+              kinds: ["Pod"]
+      exclude:
+        any:
+          - resources:
+              namespaces: ["kube-system", "kube-public", "kube-node-lease"]
+      validate:
+        message: "Set resources.requests.cpu, resources.requests.memory and resources.limits.memory."
+        pattern:
+          spec:
+            containers:
+              - resources:
+                  requests:
+                    cpu: "?*"
+                    memory: "?*"
+                  limits:
+                    memory: "?*"

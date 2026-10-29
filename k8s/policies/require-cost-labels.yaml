@@ -1,0 +1,30 @@
+# Kyverno: every Pod must carry the labels cost allocation needs.
+# Kyverno auto-generates the same rule for Deployments, StatefulSets, Jobs, etc.
+# Start in Audit (report only). Switch to Enforce once teams have fixed their charts.
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-cost-labels
+  annotations:
+    policies.kyverno.io/title: Require cost allocation labels
+spec:
+  validationFailureAction: Audit
+  background: true
+  rules:
+    - name: team-env-costcenter
+      match:
+        any:
+          - resources:
+              kinds: ["Pod"]
+      exclude:
+        any:
+          - resources:
+              namespaces: ["kube-system", "kube-public", "kube-node-lease", "kyverno", "monitoring", "opencost"]
+      validate:
+        message: "Add labels team, env and cost-center so this workload's cost can be allocated."
+        pattern:
+          metadata:
+            labels:
+              team: "?*"
+              env: "?*"
+              cost-center: "?*"

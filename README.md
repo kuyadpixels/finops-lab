@@ -1,7 +1,7 @@
 # FinOps Lab: AWS + Azure cost visibility, governance and AI token spend
 
 A small, working FinOps platform you can run in your own account. It covers the
-day-to-day jobs of a FinOps engineer:
+day-to-day jobs of a FinOps engineer. **New here? Start with [LEARNING.md](LEARNING.md)**: 14 labs run as GitHub issues and pull requests.
 
 | Job | What is in this repo |
 |---|---|
@@ -12,6 +12,7 @@ day-to-day jobs of a FinOps engineer:
 | **Anomaly detection** | AWS Cost Anomaly Detection + budget alerts (Terraform) and a SQL version that explains the idea |
 | **Forecast and variance** | Month-over-month variance query and the monthly rhythm in `docs/finops-rhythm.md` |
 | **AI token management** | Token spend by team/app/model, budget forecast, cache-hit and model-mix advice |
+| **Kubernetes** | Pod-level cost allocation by team, idle and shared cost, over-requested pods, Kyverno label/request policies, OpenCost and EKS split cost allocation |
 
 ```mermaid
 flowchart LR
@@ -37,8 +38,11 @@ flowchart LR
 ```bash
 make demo     # synthetic AWS + Azure billing data -> reports/finops-report.html
 make tokens   # synthetic AI usage -> reports/ai-token-report.md
-make test     # unit tests for the waste finder logic
+make k8s      # Kubernetes allocation on a synthetic cluster -> reports/k8s-allocation.md
+make test     # unit tests
 ```
+
+No `make` on Windows? Run the same commands from the Makefile directly, e.g. `python demo/run_demo.py`.
 
 The demo uses **synthetic data** (`demo/generate_sample.py`). It runs the same logic as the Athena queries in DuckDB, so you can see the output before touching a real bill.
 
@@ -65,7 +69,10 @@ terraform/azure/      Azure Policy: require + inherit tags
 azure/                Resource Graph queries for orphaned resources
 lambda/waste_finder/  waste finder code + unit tests
 ai-tokens/            token spend report, example prices and budgets
-docs/                 setup, FinOps operating rhythm, tagging taxonomy, results log
+k8s/                  Kubernetes allocation, snapshot scripts, Kyverno policies, OpenCost notes
+scripts/              creates the learning board (milestones, labels, lab issues)
+.github/              CI, issue and PR templates
+docs/                 setup, FinOps rhythm, labs.json, notes/, results log
 ```
 
 ## Results

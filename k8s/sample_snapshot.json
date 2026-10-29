@@ -1,0 +1,302 @@
+{
+ "_note": "SYNTHETIC cluster snapshot for the demo. Not a real cluster.",
+ "nodes": [
+  {
+   "name": "ip-10-20-1-11.ec2.internal",
+   "instance_type": "m5.xlarge",
+   "hourly_usd": 0.192,
+   "cpu_cores": 3.92,
+   "mem_gib": 14.5
+  },
+  {
+   "name": "ip-10-20-2-12.ec2.internal",
+   "instance_type": "m5.xlarge",
+   "hourly_usd": 0.192,
+   "cpu_cores": 3.92,
+   "mem_gib": 14.5
+  },
+  {
+   "name": "ip-10-20-3-13.ec2.internal",
+   "instance_type": "m5.xlarge",
+   "hourly_usd": 0.192,
+   "cpu_cores": 3.92,
+   "mem_gib": 14.5
+  },
+  {
+   "name": "ip-10-20-4-14.ec2.internal",
+   "instance_type": "m5.xlarge",
+   "hourly_usd": 0.192,
+   "cpu_cores": 3.92,
+   "mem_gib": 14.5
+  },
+  {
+   "name": "ip-10-20-9-90.ec2.internal",
+   "instance_type": "c5.2xlarge",
+   "hourly_usd": 0.34,
+   "cpu_cores": 7.91,
+   "mem_gib": 14.0
+  }
+ ],
+ "pods": [
+  {
+   "namespace": "shop",
+   "name": "orders-api-0",
+   "node": "ip-10-20-2-12.ec2.internal",
+   "labels": {
+    "team": "orders"
+   },
+   "cpu_req": 0.5,
+   "mem_req_gib": 1.0,
+   "cpu_used": 0.338,
+   "mem_used_gib": 0.472
+  },
+  {
+   "namespace": "shop",
+   "name": "orders-api-1",
+   "node": "ip-10-20-9-90.ec2.internal",
+   "labels": {
+    "team": "orders"
+   },
+   "cpu_req": 0.5,
+   "mem_req_gib": 1.0,
+   "cpu_used": 0.305,
+   "mem_used_gib": 0.719
+  },
+  {
+   "namespace": "shop",
+   "name": "orders-api-2",
+   "node": "ip-10-20-9-90.ec2.internal",
+   "labels": {
+    "team": "orders"
+   },
+   "cpu_req": 0.5,
+   "mem_req_gib": 1.0,
+   "cpu_used": 0.179,
+   "mem_used_gib": 0.861
+  },
+  {
+   "namespace": "shop",
+   "name": "orders-api-3",
+   "node": "ip-10-20-3-13.ec2.internal",
+   "labels": {
+    "team": "orders"
+   },
+   "cpu_req": 0.5,
+   "mem_req_gib": 1.0,
+   "cpu_used": 0.326,
+   "mem_used_gib": 0.505
+  },
+  {
+   "namespace": "shop",
+   "name": "orders-worker-0",
+   "node": "ip-10-20-4-14.ec2.internal",
+   "labels": {
+    "team": "orders"
+   },
+   "cpu_req": 1.0,
+   "mem_req_gib": 2.0,
+   "cpu_used": 0.15,
+   "mem_used_gib": 1.395
+  },
+  {
+   "namespace": "shop",
+   "name": "orders-worker-1",
+   "node": "ip-10-20-9-90.ec2.internal",
+   "labels": {
+    "team": "orders"
+   },
+   "cpu_req": 1.0,
+   "mem_req_gib": 2.0,
+   "cpu_used": 0.15,
+   "mem_used_gib": 1.324
+  },
+  {
+   "namespace": "pay",
+   "name": "payments-api-0",
+   "node": "ip-10-20-2-12.ec2.internal",
+   "labels": {
+    "team": "payments"
+   },
+   "cpu_req": 0.5,
+   "mem_req_gib": 1.0,
+   "cpu_used": 0.239,
+   "mem_used_gib": 0.483
+  },
+  {
+   "namespace": "pay",
+   "name": "payments-api-1",
+   "node": "ip-10-20-9-90.ec2.internal",
+   "labels": {
+    "team": "payments"
+   },
+   "cpu_req": 0.5,
+   "mem_req_gib": 1.0,
+   "cpu_used": 0.282,
+   "mem_used_gib": 0.408
+  },
+  {
+   "namespace": "pay",
+   "name": "payments-api-2",
+   "node": "ip-10-20-1-11.ec2.internal",
+   "labels": {
+    "team": "payments"
+   },
+   "cpu_req": 0.5,
+   "mem_req_gib": 1.0,
+   "cpu_used": 0.219,
+   "mem_used_gib": 0.927
+  },
+  {
+   "namespace": "etl",
+   "name": "spark-driver-0",
+   "node": "ip-10-20-1-11.ec2.internal",
+   "labels": {
+    "team": "data"
+   },
+   "cpu_req": 2.0,
+   "mem_req_gib": 6.0,
+   "cpu_used": 1.031,
+   "mem_used_gib": 2.502
+  },
+  {
+   "namespace": "etl",
+   "name": "airflow-0",
+   "node": "ip-10-20-3-13.ec2.internal",
+   "labels": {
+    "team": "data"
+   },
+   "cpu_req": 0.5,
+   "mem_req_gib": 2.0,
+   "cpu_used": 0.305,
+   "mem_used_gib": 1.591
+  },
+  {
+   "namespace": "etl",
+   "name": "airflow-1",
+   "node": "ip-10-20-4-14.ec2.internal",
+   "labels": {
+    "team": "data"
+   },
+   "cpu_req": 0.5,
+   "mem_req_gib": 2.0,
+   "cpu_used": 0.371,
+   "mem_used_gib": 1.813
+  },
+  {
+   "namespace": "tools",
+   "name": "argocd-0",
+   "node": "ip-10-20-4-14.ec2.internal",
+   "labels": {
+    "team": "platform"
+   },
+   "cpu_req": 0.25,
+   "mem_req_gib": 0.5,
+   "cpu_used": 0.188,
+   "mem_used_gib": 0.359
+  },
+  {
+   "namespace": "sandbox",
+   "name": "test-app-0",
+   "node": "ip-10-20-2-12.ec2.internal",
+   "labels": {
+    "app": "test-app"
+   },
+   "cpu_req": 1.0,
+   "mem_req_gib": 2.0,
+   "cpu_used": 0.15,
+   "mem_used_gib": 1.767
+  },
+  {
+   "namespace": "sandbox",
+   "name": "test-app-1",
+   "node": "ip-10-20-1-11.ec2.internal",
+   "labels": {
+    "app": "test-app"
+   },
+   "cpu_req": 1.0,
+   "mem_req_gib": 2.0,
+   "cpu_used": 0.15,
+   "mem_used_gib": 0.839
+  },
+  {
+   "namespace": "kube-system",
+   "name": "coredns-ip-10-20-1-1",
+   "node": "ip-10-20-1-11.ec2.internal",
+   "labels": {},
+   "cpu_req": 0.1,
+   "mem_req_gib": 0.07,
+   "cpu_used": 0.06,
+   "mem_used_gib": 0.049
+  },
+  {
+   "namespace": "kube-system",
+   "name": "coredns-ip-10-20-2-1",
+   "node": "ip-10-20-2-12.ec2.internal",
+   "labels": {},
+   "cpu_req": 0.1,
+   "mem_req_gib": 0.07,
+   "cpu_used": 0.06,
+   "mem_used_gib": 0.049
+  },
+  {
+   "namespace": "kube-system",
+   "name": "aws-node-ip-10-20-1-1",
+   "node": "ip-10-20-1-11.ec2.internal",
+   "labels": {},
+   "cpu_req": 0.025,
+   "mem_req_gib": 0.05,
+   "cpu_used": 0.015,
+   "mem_used_gib": 0.035
+  },
+  {
+   "namespace": "kube-system",
+   "name": "aws-node-ip-10-20-2-1",
+   "node": "ip-10-20-2-12.ec2.internal",
+   "labels": {},
+   "cpu_req": 0.025,
+   "mem_req_gib": 0.05,
+   "cpu_used": 0.015,
+   "mem_used_gib": 0.035
+  },
+  {
+   "namespace": "monitoring",
+   "name": "prometheus-ip-10-20-1-1",
+   "node": "ip-10-20-1-11.ec2.internal",
+   "labels": {},
+   "cpu_req": 0.5,
+   "mem_req_gib": 2.0,
+   "cpu_used": 0.3,
+   "mem_used_gib": 1.4
+  },
+  {
+   "namespace": "monitoring",
+   "name": "prometheus-ip-10-20-2-1",
+   "node": "ip-10-20-2-12.ec2.internal",
+   "labels": {},
+   "cpu_req": 0.5,
+   "mem_req_gib": 2.0,
+   "cpu_used": 0.3,
+   "mem_used_gib": 1.4
+  },
+  {
+   "namespace": "kyverno",
+   "name": "kyverno-ip-10-20-1-1",
+   "node": "ip-10-20-1-11.ec2.internal",
+   "labels": {},
+   "cpu_req": 0.1,
+   "mem_req_gib": 0.25,
+   "cpu_used": 0.06,
+   "mem_used_gib": 0.175
+  },
+  {
+   "namespace": "kyverno",
+   "name": "kyverno-ip-10-20-2-1",
+   "node": "ip-10-20-2-12.ec2.internal",
+   "labels": {},
+   "cpu_req": 0.1,
+   "mem_req_gib": 0.25,
+   "cpu_used": 0.06,
+   "mem_used_gib": 0.175
+  }
+ ]
+}

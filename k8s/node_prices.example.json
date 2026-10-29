@@ -1,0 +1,10 @@
+{
+  "_note": "EXAMPLE on-demand USD/hour (us-east-1 list prices). Replace with your Region's prices, or your effective rate after Savings Plans.",
+  "t3.medium": 0.0416,
+  "t3.large": 0.0832,
+  "m5.large": 0.096,
+  "m5.xlarge": 0.192,
+  "c5.xlarge": 0.17,
+  "c5.2xlarge": 0.34,
+  "default": 0.1
+}
