@@ -36,6 +36,7 @@ flowchart LR
 ## Try it in 1 minute (no cloud account)
 
 ```bash
+make setup && source .venv/bin/activate   # macOS / Linux, once
 make demo     # synthetic AWS + Azure billing data -> reports/finops-report.html
 make tokens   # synthetic AI usage -> reports/ai-token-report.md
 make k8s      # Kubernetes allocation on a synthetic cluster -> reports/k8s-allocation.md

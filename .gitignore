@@ -9,3 +9,5 @@ __pycache__/
 demo/data/
 ai-tokens/sample_usage.csv
 .DS_Store
+.venv/
+snapshot/
